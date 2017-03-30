@@ -92,7 +92,6 @@ ul {
 	width: 300px; 
 	height: 300px;
 	border-radius: 5px;
-	border: 3px #000 solid;
 	background: #fff;
 	position: fixed;
 	top: 45%;
@@ -119,7 +118,7 @@ ul {
 	z-index:3;
 	position:fixed;
 	background-color:#000;
-	opacity:0.8;
+	opacity:0.6;
 	-moz-opacity:0.8;
 	filter:alpha(opacity=80);
 	width:100%; 
