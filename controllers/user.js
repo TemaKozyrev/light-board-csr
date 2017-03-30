@@ -37,24 +37,20 @@ router.post('/register', upload.single('avatar'), function (req, res) {
     })
 });
 
-router.get('/login', function (req, res) {
-    res.send('login');
-});
-
 router.post('/login', function (req, res, next) {
     passport.authenticate('local', function (err, user, info) {
         if (!user) {
-            res.redirect(req.get('referer'));
-        }
-        req.logIn(user, function (err) {
-            res.redirect(req.get('referer'));
-        });
+            res.send({error: 'bad user'});
+        } else
+            req.logIn(user, function (err) {
+                res.send(req.user.username)
+            });
     })(req, res, next);
 });
 
 router.get('/logout', function (req, res) {
     req.logout();
-    res.redirect('/');
+    res.send('logout success')
 });
 
 router.get("/verify/:token", function (req, res, next) {

@@ -31,13 +31,14 @@ $(document).ready(function() {
      $.get( "http://localhost:3000/account/info", function( data ) {
         if (data.error) {
             $('#user').load('/html/login.html');
-            $('.user-form-flex').show();
         } else {
-
+            $('#user').load('/html/user_info.html', function () {
+                $('.username').append('<a>' + data + '</a>')
+            });
         }
     });
 
-    $( document ).on( "click", ".registration", function(event) {
+    $(document).on( "click", ".registration", function(event) {
         event.preventDefault();
         overlay.fadeIn(400,
             function(){
@@ -46,5 +47,45 @@ $(document).ready(function() {
                     .css('display', 'block')
                     .animate({opacity: 1, top: '50%'}, 200);
             });
+    });
+
+    $(document).on("submit", ".login_form", function (event, data) {
+        event.preventDefault();
+        var $inputs = $('.login_form :input');
+
+        var values = {};
+        $inputs.each(function() {
+            values[this.name] = $(this).val();
+        });
+
+        $.ajax({
+            type: 'POST',
+            url: "http://localhost:3000/account/login",
+            data: {
+                "username": values.username,
+                "password": values.password
+            },
+            success: function (data) {
+                if (!data.error) {
+                    $('#user.user-form-flex').remove();
+                    $('#user').load('/html/user_info.html', function () {
+                        $('.username').append('<a>' + data + '</a>')
+                    });
+                } else
+                    alert(data.error)
+            },
+        });
+    });
+
+    $(document).on( "click", ".logout", function(event) {
+        event.preventDefault();
+        $.ajax({
+            type: 'GET',
+            url: "http://localhost:3000/account/logout",
+            success: function (data) {
+                $('#user.user-form-flex').remove();
+                $('#user').load('/html/login.html');
+            },
+        });
     });
 });
