@@ -1,14 +1,12 @@
 <ul class="user-form-flex">
     <li class="flex-user">
-        <form id="login">
-            <div class="form-group">
-                <input type="text" placeholder="username" name="username">
-                <input type="password" placeholder="password" name="password">
-            </div>
-            <button type="submit">Login</button>
+        <form action="/account/login" method="post">
+            <input class="user_input" type="text" placeholder="username" name="username">
+            <input class="user_input" type="password" placeholder="password" name="password">
+            <button type="submit" class="user_input">Login</button>
         </form>
     </li>
     <li class="flex-user">
-        <a id="open_registration_modal">SignUp</a>
+        <a href="/html/registration.html">SignUp</a>
     </li>
 </ul>
