@@ -56,6 +56,31 @@ ul {
 
 /* container for lsat added items */
 
+.flex-container-offers {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+
+    -webkit-flex-flow: row wrap;
+    justify-content: space-around;
+}
+
+.flex-offer {
+    padding: 5px;
+    width: 350px;
+    height: 300px;
+    margin-top: 10px;
+
+    font-size: 1em;
+    border: solid 1px;
+}
+
 .flex-container {
     padding: 0;
     margin: 0;
@@ -71,16 +96,23 @@ ul {
     justify-content: space-around;
 }
 
-.flex-item {
+.flex-item-category {
     padding: 5px;
-    width: 350px;
-    height: 300px;
+    width: 200px;
     margin-top: 10px;
 
-    /*line-height: 300px;*/
     font-size: 1em;
-    /*text-align: center;*/
-    border: solid 1px;
+    /*border: solid 1px;*/
+    text-align: center;
+}
+
+.flex-item-offers {
+    padding: 5px;
+    width: 1000px;
+    margin-top: 10px;
+
+    font-size: 1em;
+    /*border: solid 1px;*/
 }
 
 .item-img {
@@ -163,3 +195,12 @@ ul {
     display: inline;
 }
 
+
+.category {
+    padding: 5px;
+    list-style-type: none;
+}
+
+.category a {
+    text-decoration: none;
+}
