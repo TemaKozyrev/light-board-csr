@@ -9,7 +9,7 @@ $(document).ready(function() {
          var div = $(this).attr('href'); 
          overlay.fadeIn(400, 
              function(){ 
-                 modal.append("<div id='modal_content'>" + div + "</div>")
+                 modal.append("<div id='modal_content'><img src='/images/elep.jpg' class='item-img'><p>test/test</p><p>test-test</p></div>");
                  modal 
                      .css('display', 'block') 
                      .animate({opacity: 1, top: '50%'}, 200); 
