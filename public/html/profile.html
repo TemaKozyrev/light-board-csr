@@ -5,65 +5,41 @@
     <title>Profile</title>
     <link rel="stylesheet" type="text/css" href="/stylesheets/profile.css">
     <script src="/javascripts/jquery-3.2.0.min.js"></script>
+    <script src="/javascripts/api.js"></script>
+    <script src="/javascripts/profile.js"></script>
 </head>
 <body>
 <header>
-    <ul class="navigation">
+    <ul class="navigation" id="nav-list">
         <li><a href="/html/index.html">light-board</a></li>
-        <li><a href="#">username</a></li>
     </ul>
 </header>
 
 <ul class="flex-container">
-    <li class="flex-user-info">
+    <li class="flex-user-info" id="user-info">
         <img src="/images/elep.jpg" class="user-avatar">
-        <p>user-info</p>
     </li>
     <li class="flex-add-item">
         <h4>add offer:</h4>
-        <form>
-            <p><input type="text" placeholder="offer title" name="title"></p>
-            <p><textarea name="description" cols="30" rows="10" placeholder="description"></textarea></p>
-            <p><input type="text" placeholder="contact" name="contact"></p>
-            <p>Image: <input type="file"></p>
+        <form id="add-offer-form">
+            <p><select id="category-select" name="catname">
+              <option disabled selected>Выберите категорию</option>
+            </select></p>
+            <p><input type="text" placeholder="offer title" name="oname"></p>
+            <p><input type="text" placeholder="short description" name="sdesc"></p>
+            <p><textarea name="desc" cols="30" rows="10" placeholder="description"></textarea></p>
+            <p>Image: <input name="file" type="file"></p>
             <p><input type="submit" value="Отправить"></p>
         </form>
     </li>
 </ul>
 
-<ul class="flex-container-offers">
-    <li class="flex-item">
+<ul class="flex-container-offers" id="offer-list">
+    <!-- <li class="flex-item">
         <img src="/images/elep.jpg" class="item-img">
         <p>text text</p>
         <p>text/text</p>
-    </li><li class="flex-item">
-        <img src="/images/elep.jpg" class="item-img">
-        <p>text text</p>
-        <p>text/text</p>
-    </li><li class="flex-item">
-        <img src="/images/elep.jpg" class="item-img">
-        <p>text text</p>
-        <p>text/text</p>
-    </li><li class="flex-item">
-        <img src="/images/elep.jpg" class="item-img">
-        <p>text text</p>
-        <p>text/text</p>
-    </li><li class="flex-item">
-        <img src="/images/elep.jpg" class="item-img">
-        <p>text text</p>
-        <p>text/text</p>
-    </li><li class="flex-item">
-        <img src="/images/elep.jpg" class="item-img">
-        <p>text text</p>
-        <p>text/text</p>
-    </li>
-    <li class="flex-item">
-        <img src="/images/elep.jpg" class="item-img">
-        <p>text text</p>
-        <p>text/text</p>
-    </li>
-
-
+    </li> -->
 </ul>
 </body>
 </html>

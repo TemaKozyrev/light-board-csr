@@ -21,9 +21,9 @@ function _api() {
         },
         success: function (data) {
             if (!data.error) {
-                callback(data)
+                callback(data);
             } else
-                return false
+                return false;
         },
     });
   };
@@ -33,7 +33,7 @@ function _api() {
         type: 'GET',
         url: "http://localhost:3000/account/logout",
         success: function (data) {
-            callback()
+            callback();
         },
     });
   };
@@ -46,5 +46,32 @@ function _api() {
            cb(data);
        }
    });
-  }
+ };
+
+ this.getProfileInfo = function(callback) {
+   $.ajax({
+       type: 'GET',
+       url: "http://localhost:3000/account/profile",
+       success: function (data) {
+           callback(data);
+       },
+   });
+ };
+
+ this.createOffer = function(values, callback) {
+   $.ajax({
+       type: 'POST',
+       url: "http://localhost:3000/offer/create",
+       data: {
+           "catname": values.catname,
+           "oname": values.oname,
+           "sdesc": values.sdesc,
+           "desc": values.desc,
+           "file": values.file
+       },
+       success: function (data) {
+           callback();
+       },
+   });
+ }
 }
