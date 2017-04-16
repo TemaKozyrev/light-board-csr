@@ -26,13 +26,13 @@ router.post('/register', upload.single('avatar'), function (req, res) {
 
     user.save(function (err) {
         if (err) {
-            return res.redirect('/account/register');
+            return res.send({error: true});
         } else {
             verifyToken.createVerificationToken(user, req)
         };
 
         passport.authenticate('local')(req, res, function () {
-            res.redirect('/');
+            res.send({error: false})
         });
     })
 });
@@ -40,7 +40,7 @@ router.post('/register', upload.single('avatar'), function (req, res) {
 router.post('/login', function (req, res, next) {
     passport.authenticate('local', function (err, user, info) {
         if (!user) {
-            res.send({error: 'bad user'});
+            res.send({error: true});
         } else
             req.logIn(user, function (err) {
                 res.send(req.user.username)
@@ -50,7 +50,7 @@ router.post('/login', function (req, res, next) {
 
 router.get('/logout', function (req, res) {
     req.logout();
-    res.send('logout success')
+    res.send({error: false})
 });
 
 router.get("/verify/:token", function (req, res, next) {
@@ -68,9 +68,9 @@ router.post('/changepass', function (req, res) {
                 if (isMatch) {
                     user.password = req.body.newpass;
                     user.save();
-                    res.redirect('/account/profile/?valid=' + true)
+                    res.redirect({error: false})
                 } else {
-                    res.redirect('/account/profile/?valid=' + false)
+                    res.redirect({error: true})
                 }
             })
         });
@@ -99,11 +99,11 @@ router.get('/profile', function (req, res) {
         }
         Category.find().select('name').exec(function (err, category) {
             Offer.find({_userId: req.user._id}).exec(function (err, offers) {
-                res.render('profile', {valid: valid, cat: category, offers: offers});
+                res.send({cat: category, offers: offers});
             });
         });
     } else {
-        res.redirect('/account/register')
+        res.send({error: true})
     }
 });
 

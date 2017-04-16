@@ -19,10 +19,10 @@ router.post('/create', upload.single('image'), function (req, res) {
             req.user,
             req.file.filename,
             function () {
-                res.redirect('/account/profile')
+                res.send({error: false})
             });
     } else {
-        res.redirect('/account/register')
+        res.send({error: true})
     }
 });
 
@@ -30,13 +30,13 @@ router.get('/delete', function (req, res) {
     if (req.isAuthenticated()) {
         if (_.isEmpty(req.query) == false) {
             deleteOffer(req.query.offer_id, req.user, function () {
-                res.redirect('/account/profile');
+                res.send({error: false})
             });
         } else {
-            res.redirect('/account/profile')
+            res.send({error: false})
         }
     } else {
-        res.redirect('/account/register')
+        res.send({error: true})
     }
 });
 

@@ -6,7 +6,7 @@ var collectDateSortOffers = require('../middleware/collectOffers').collectDateSo
 router.get('/', function(req, res, next) {
     Category.find().select('name shortName').exec(function (err, doc) {
         collectDateSortOffers(5, function (result) {
-            res.render('index', {cat: doc, offers: result});
+            res.send({cat: doc, offers: result});
         });
     });
 });
